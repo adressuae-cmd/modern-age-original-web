@@ -15,12 +15,10 @@ if [[ "$arch" != "aarch64" && "$arch" != "arm64" ]]; then
   exit 1
 fi
 if [[ ! -f game/original.xapk ]]; then
-  echo 'ERROR: place the original game XAPK at game/original.xapk.' >&2
-  exit 1
+  echo 'XAPK not present locally. Checking repository Release asset...'
+  bash scripts/fetch-game.sh
 fi
-if [[ -f game/SHA256SUMS ]]; then
-  ( cd game && sha256sum --check SHA256SUMS )
-fi
+(cd game && sha256sum --check SHA256SUMS)
 echo 'Starting native ARM64 Android and browser streaming services...'
 docker compose up -d android web
 echo 'Installing the three unmodified original APK splits...'
