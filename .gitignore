@@ -1,0 +1,6 @@
+game/*.xapk
+game/*.apk
+*.log
+*.env
+.idea/
+.DS_Store
