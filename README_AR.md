@@ -51,3 +51,11 @@ docker compose --profile setup run --rm install_game
 - ws-scrcpy — https://github.com/ioucode/ws-scrcpy
 
 **تنبيه للوكيل:** لا تستبدل اللعبة بمحاكاة/واجهة مشابهة. لا تعدّل ملفات اللعبة أو تصميمها دون أمر صريح. لا ترفع XAPK/APK إلى المستودع العام. يقتصر هذا المستودع على سكربتات التشغيل.
+
+## تنبيه: ملف XAPK الأصلي غير مرفوع بعد
+
+حجم ملف المستخدم الأصلي **180,490,911 بايت** (SHA-256 `5dcdc32c725b4fd649d0873a2f857b11c38d216baa98f6f57d047eb724822085`)، وهذا يتجاوز حد ملفات Git العادية في GitHub. يجب توفيره كـ GitHub Release asset (أو Git LFS). لا ترفع ملفاً بديلاً ولا تُعد بناء اللعبة.
+
+لإتاحة النسخة للوكيل من دون البحث مجدداً: افتح [إنشاء Release](https://github.com/adressuae-cmd/modern-age-original-web/releases/new)، واجعل Tag هو `original-v1.0.164`، وأرفق الملف باسم **`original.xapk`**، ثم انشر Release. يجب مراعاة امتلاك حق إعادة توزيع ملف اللعبة قبل نشره للعامة.
+
+بعد وجود الملف في Release، ينزّله `scripts/fetch-game.sh` تلقائياً إلى `game/original.xapk` ويفحص SHA-256، كما يستدعيه `scripts/start.sh` عند الحاجة. لا تدّعِ أن الملف متاح أو قابل للتشغيل قبل التحقق من وجوده فعلياً.
